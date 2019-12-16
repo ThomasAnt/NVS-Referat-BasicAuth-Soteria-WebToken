@@ -4,18 +4,26 @@ import java.util.HashSet;
 
 public class User {
     String username;
-    String password;
+    byte[] password;
     HashSet roles;
+    byte[] salt;
 
-    public User(String username, String password) {
+    public User(String username, byte[] password) {
         this.username = username;
         this.password = password;
     }
 
-    public User(String username, String password, HashSet roles) {
+    public User(String username, byte[] password, HashSet roles) {
         this.username = username;
         this.password = password;
         this.roles = roles;
+    }
+
+    public User(String username, byte[] password, HashSet roles, byte[] salt) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+        this.salt = salt;
     }
 
     public String getUsername() {
@@ -26,11 +34,19 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
+    public byte[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
+    }
+
+    public void setPassword(byte[] password) {
         this.password = password;
     }
 
